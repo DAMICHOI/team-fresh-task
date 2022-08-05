@@ -101,3 +101,6 @@ CREATE TABLE voc (
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일시'
 );
 ```
+
+## API Swagger
+- URL : `http://localhost:8080/swagger-ui/index.html`
