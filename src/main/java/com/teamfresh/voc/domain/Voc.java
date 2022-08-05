@@ -15,7 +15,10 @@ import javax.persistence.Table;
 import com.teamfresh.voc.constant.VocStatus;
 import com.teamfresh.voc.constant.VocType;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * VOC 정보 Entity
@@ -23,6 +26,9 @@ import lombok.Getter;
 @Entity
 @Getter
 @Table(name = "voc")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Voc extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

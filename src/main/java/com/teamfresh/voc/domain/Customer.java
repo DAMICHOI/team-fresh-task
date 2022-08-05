@@ -7,7 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * 고객사 Entity
@@ -15,6 +18,9 @@ import lombok.Getter;
 @Entity
 @Getter
 @Table(name = "customer")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
