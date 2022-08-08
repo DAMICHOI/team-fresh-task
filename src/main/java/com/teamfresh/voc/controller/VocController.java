@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.teamfresh.voc.constant.VocStatus;
 import com.teamfresh.voc.dto.VocDto;
 import com.teamfresh.voc.dto.VocRegistryDto;
 import com.teamfresh.voc.dto.response.BasicResponse;

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,7 +24,9 @@ public class Reparation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne(mappedBy = "reparation")
+	// @OneToOne(mappedBy = "reparation")
+	@OneToOne
+	@JoinColumn(name = "voc_id")
 	private Voc voc;
 
 	@Column(name = "amount", nullable = false, columnDefinition = "NUMERIC(19,2) COMMENT '배상금액'")

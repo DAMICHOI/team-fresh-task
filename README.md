@@ -49,7 +49,7 @@
 
 ## DB Schema
 ```
--- 고객사
+-- 고객사 정보
 CREATE TABLE customer (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '고객사 ID',
     company_name VARCHAR(30) NOT NULL COMMENT '고객사명',
@@ -59,30 +59,11 @@ CREATE TABLE customer (
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일시'
 );
 
--- 운송기사
+-- 운송기사 정보
 CREATE TABLE carrier (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '운송기사 ID',
     carrier_name VARCHAR(5) NOT NULL COMMENT '운송기사명',
     company_name VARCHAR(30) NOT NULL COMMENT '운송사명',
-    created_at TIMESTAMP NOT NULL COMMENT '등록일시',
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일시'
-);
-
--- 패널티 정보
-CREATE TABLE penalty (
-    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '패널티 ID',
-    voc_id BIGINT NOT NULL COMMENT 'VOC ID',
-    is_confirm TINYINT NOT NULL DEFAULT 'N' COMMENT '패널티 확인 여부',
-    is_objection TINYINT NOT NULL DEFAULT 'N' COMMENT '이의제기 여부',
-    created_at TIMESTAMP NOT NULL COMMENT '등록일시',
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일시'
-);
-
--- 배상 정보
-CREATE TABLE reparation (
-    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '배상 ID',
-    voc_id BIGINT NOT NULL COMMENT 'VOC ID',
-    amount NUMERIC(19,2) NOT NULL COMMENT '배상금액',
     created_at TIMESTAMP NOT NULL COMMENT '등록일시',
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일시'
 );
@@ -95,8 +76,25 @@ CREATE TABLE voc (
     status VARCHAR(10) NOT NULL COMMENT '진행 상태',
     customer_id BIGINT NOT NULL COMMENT '고객사 ID',
     carrier_id BIGINT NOT NULL COMMENT '운송기사 ID',
-    penalty_id BIGINT NULL COMMENT '패널티 정보 ID',
-    reparation_id BIGINT NULL COMMENT '배상 정보 ID',
+    created_at TIMESTAMP NOT NULL COMMENT '등록일시',
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일시'
+);
+
+-- 패널티 정보
+CREATE TABLE penalty (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '패널티 ID',
+    voc_id BIGINT NOT NULL COMMENT 'VOC ID',
+    is_confirm BOOLEAN NOT NULL DEFAULT FALSE COMMENT '패널티 확인 여부',
+    is_objection BOOLEAN NOT NULL DEFAULT FALSE COMMENT '이의제기 여부',
+    created_at TIMESTAMP NOT NULL COMMENT '등록일시',
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일시'
+);
+
+-- 배상 정보
+CREATE TABLE reparation (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '배상 ID',
+    voc_id BIGINT NOT NULL COMMENT 'VOC ID',
+    amount NUMERIC(19,2) NOT NULL COMMENT '배상금액',
     created_at TIMESTAMP NOT NULL COMMENT '등록일시',
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일시'
 );

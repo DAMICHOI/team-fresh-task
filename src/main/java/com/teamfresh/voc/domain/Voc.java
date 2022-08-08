@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import com.teamfresh.voc.constant.VocStatus;
 import com.teamfresh.voc.constant.VocType;
 
@@ -29,6 +31,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@DynamicUpdate
 public class Voc extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,11 +56,13 @@ public class Voc extends BaseEntity {
 	@JoinColumn(name = "carrier_id", nullable = false)
 	private Carrier carrier;
 
-	@OneToOne
-	@JoinColumn(name = "penalty_id")
+	// @OneToOne
+	// @JoinColumn(name = "penalty_id")
+	@OneToOne(mappedBy = "voc")
 	private Penalty penalty;
 
-	@OneToOne
-	@JoinColumn(name = "reparation_id")
+	// @OneToOne
+	// @JoinColumn(name = "reparation_id")
+	@OneToOne(mappedBy = "voc")
 	private Reparation reparation;
 }

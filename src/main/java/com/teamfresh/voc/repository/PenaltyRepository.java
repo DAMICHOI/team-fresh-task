@@ -7,4 +7,5 @@ import com.teamfresh.voc.domain.Penalty;
 
 @Repository
 public interface PenaltyRepository extends JpaRepository<Penalty, Long> {
+	Penalty findByVoc_Id(Long id);
 }

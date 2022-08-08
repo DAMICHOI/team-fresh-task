@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS voc;
 DROP TABLE IF EXISTS penalty;
 DROP TABLE IF EXISTS reparation;
+DROP TABLE IF EXISTS voc;
 DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS carrier;
 
@@ -31,8 +31,6 @@ CREATE TABLE voc (
     status VARCHAR(10) NOT NULL COMMENT '진행 상태',
     customer_id BIGINT NOT NULL COMMENT '고객사 ID',
     carrier_id BIGINT NOT NULL COMMENT '운송기사 ID',
-    penalty_id BIGINT NULL COMMENT '패널티 정보 ID',
-    reparation_id BIGINT NULL COMMENT '배상 정보 ID',
     created_at TIMESTAMP NOT NULL COMMENT '등록일시',
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일시'
 );

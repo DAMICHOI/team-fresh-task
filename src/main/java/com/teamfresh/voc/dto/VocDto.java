@@ -4,14 +4,21 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.teamfresh.voc.constant.VocStatus;
 import com.teamfresh.voc.constant.VocType;
+import com.teamfresh.voc.domain.Carrier;
+import com.teamfresh.voc.domain.Customer;
 import com.teamfresh.voc.domain.Penalty;
 import com.teamfresh.voc.domain.Reparation;
 import com.teamfresh.voc.domain.Voc;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
