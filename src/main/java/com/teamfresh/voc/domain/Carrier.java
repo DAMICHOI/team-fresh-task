@@ -1,10 +1,14 @@
 package com.teamfresh.voc.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -31,4 +35,9 @@ public class Carrier extends BaseEntity {
 
 	@Column(name = "company_name", nullable = false, columnDefinition = "VARCHAR(30) COMMENT '운송사명'")
 	private String company_name;
+
+	public Carrier(Long id) {
+		this.id = id;
+	}
+
 }

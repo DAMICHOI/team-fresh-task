@@ -1,11 +1,10 @@
 package com.teamfresh.voc.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
-import com.teamfresh.voc.constant.VocStatus;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.teamfresh.voc.constant.VocType;
-import com.teamfresh.voc.domain.Carrier;
-import com.teamfresh.voc.domain.Customer;
 import com.teamfresh.voc.domain.Penalty;
 import com.teamfresh.voc.domain.Reparation;
 import com.teamfresh.voc.domain.Voc;
@@ -15,35 +14,37 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class VocDto implements Serializable {
 	private Long id;
-	private VocType type;
-	private String contents;
-	private VocStatus status;
-	private CustomerDto customer;
-	private CarrierDto carrier;
-	private PenaltyDto penalty;
-	private ReparationDto reparation;
+	private VocType type;		// 귀책당사자
+	private String contents;	// 귀책 내용
+	private boolean is_confirm;	// 기사 확인 여부
+	private boolean is_objection;	// 이의제기 여부
+	private BigDecimal amount;	// 배상 금액
 
-	public VocDto(Long id, VocType value, String contents, VocStatus status, Customer customer, Carrier carrier,
-		Penalty penalty, Reparation reparation) {
+	public VocDto(Long id, VocType type, String contents, Penalty penalty, Reparation reparation) {
 		this.id = id;
-		this.type = value;
+		this.type = type;
 		this.contents = contents;
-		this.status = status;
-		this.customer = CustomerDto.from(customer);
-		this.carrier = CarrierDto.from(carrier);
-		this.penalty = PenaltyDto.from(penalty);
+		this.is_confirm = false;
+		this.is_objection = false;
+		this.amount=null;
 	}
 
-	public VocDto form(Voc voc) {
+	/**
+	 * VOC Entity 를 DTO 로 변환
+	 * @param voc VOC Entity
+	 * @return 변환된 VOC DTO
+	 */
+	public static VocDto from(Voc voc) {
 		return new VocDto(
 			voc.getId(),
 			voc.getType(),
 			voc.getContents(),
-			voc.getStatus(),
-			voc.getCustomer(),
-			voc.getCarrier(),
+			// voc.getPenalty().getIs_confirm(),
+			// voc.getPenalty().getIs_objection(),
+			// voc.getReparation().getAmount(),
 			voc.getPenalty(),
 			voc.getReparation()
 		);

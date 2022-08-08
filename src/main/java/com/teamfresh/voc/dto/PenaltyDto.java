@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PenaltyDto implements Serializable {
 	private Long id;
-	private char is_confirm;
-	private char is_objection;
+	private boolean is_confirm;
+	private boolean is_objection;
 
 	public static PenaltyDto from(Penalty penalty) {
 		return new PenaltyDto(
 			penalty.getId(),
-			penalty.getIs_confirm(),
-			penalty.getIs_objection()
+			penalty.is_confirm(),
+			penalty.is_objection()
 		);
 	}
 }
