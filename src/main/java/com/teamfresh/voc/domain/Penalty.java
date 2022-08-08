@@ -25,8 +25,8 @@ public class Penalty extends BaseEntity {
 	private Voc voc;
 
 	@Column(name = "is_confirm", columnDefinition = "TINYINT DEFAULT 'N' COMMENT '패널티 확인 여부'", nullable = false)
-	private char is_confirm;
+	private boolean is_confirm;
 
 	@Column(name = "is_objection", columnDefinition = "TINYINT DEFAULT 'N' COMMENT '이의제기 여부'", nullable = false)
-	private char is_objection;
+	private boolean is_objection;
 }
